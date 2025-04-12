@@ -21,7 +21,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /var/www
 
 # Clone the GitHub repository into the container
-RUN git clone https://github.com/waytonoway/modio-code-test.git .
+RUN git clone https://github.com/waytonoway/modio-code-test.git app
+
+# Set the working directory to the cloned repo
+WORKDIR /var/www/app
 
 # Install Composer dependencies
 RUN composer install --no-interaction --optimize-autoloader
